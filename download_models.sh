@@ -1,11 +1,16 @@
-# Create a directory for downloads
-mkdir ./checkpoints
+#!/bin/bash
 
-# Install gdown if not installed
-pip install gdown
+# Create a directory for checkpoints
+mkdir -p ./checkpoints
 
-# Download all files from the Google Drive folder
-gdown --folder https://drive.google.com/drive/folders/1sHc2xEEGwnb0h2rkUhG9sPmOxvRvPVpJ -O ./checkpoints/
+# Install rclone if not installed
+sudo apt-get install -y rclone
 
-# List the downloaded files
+# Configure rclone manually (or do this step earlier)
+# rclone config
+
+# Copy files from Google Drive folder
+rclone copy gdrive:1sHc2xEEGwnb0h2rkUhG9sPmOxvRvPVpJ ./checkpoints/ --progress
+
+# List downloaded files
 ls -lh ./checkpoints/
